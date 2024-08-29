@@ -6,14 +6,14 @@ This accelerator utilizes project templates as its foundation. Therefore, the re
 
 ## Repositories and their Directories
 
-This section describes the directory structure used in the LLMOps accelerator. By following this directory structure, teams can ensure a consistent and organized approach to developing and managing their LLM projects.
+This section describes the directory structure used in the GenAIOps accelerator. By following this directory structure, teams can ensure a consistent and organized approach to developing and managing their LLM projects.
 
-### LLMOps
+### GenAIOps
 
-The `LLMOps` repository is the central hub, offering detailed documentation and scripts for initializing projects with these templates. It allows direct use or customization through copying/forking. It includes the following:
+The `GenAIOps` repository is the central hub, offering detailed documentation and scripts for initializing projects with these templates. It allows direct use or customization through copying/forking. It includes the following:
 
-- **documentation**: Holds setup guides and concept explanations for the LLMOps accelerator.
-- **bootstrapping script**: Initializes and configures new projects using LLMOps templates.
+- **documentation**: Holds setup guides and concept explanations for the GenAIOps accelerator.
+- **bootstrapping script**: Initializes and configures new projects using GenAIOps templates.
 
 ### LLM Project-template
 
@@ -26,7 +26,7 @@ The `LLM Project-template` represents repositories serving as templates for LLM 
 - **src**: Source code for the project, including orchestration flows, model definitions, training scripts, and utilities.
 - **tests**: Contains test cases and scripts to ensure the quality and correctness of the codebase.
 
-For an example of a project template, you can refer to this [RAG with Azure AI Studio and Promptflow](https://github.com/azure/llmops-project-template) template.
+For an example of a project template, you can refer to this [RAG with Azure AI Studio and Promptflow](https://github.com/azure/GenAIOps-project-template) template.
 
 ### Project A (Bootstrapped Project)
 

@@ -18,22 +18,22 @@ You will also need:
 
 ## Steps to Bootstrap a Project
 
-1. **Clone the LLMOps Repo (this repository) into a temporary directory**
+1. **Clone the GenAIOps Repo (this repository) into a temporary directory**
 
    Clone the repository from GitHub into a temporary directory:
 
    ```sh
     mkdir temp
     cd temp
-    git clone https://github.com/azure/llmops
+    git clone https://github.com/azure/GenAIOps
    ```
 
 2. **Define Properties for Bootstrapping**
 
-    Go to the `llmops` directory.
+    Go to the `GenAIOps` directory.
 
    ```sh
-    cd llmops
+    cd GenAIOps
    ```
 
    Create a copy of the `bootstrap.properties.template` file with this filename `bootstrap.properties`.
@@ -47,7 +47,7 @@ You will also need:
    - **GitHub Repo Creation** (related to the new repository to be created)
      - `github_username`: Your GitHub **username**.
      - `github_use_ssh`: Set to **true** to interact with GitHub repos using [SSH](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-ssh-urls), **false** to use [HTTPS](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls).
-     - `github_template_repo`: The project template repository. Ex: *azure/llmops-project-template*.
+     - `github_template_repo`: The project template repository. Ex: *azure/GenAIOps-project-template*.
      - `github_new_repo`: The bootstrapped project repo to be created. Ex *placerda/my-rag-project*.
      - `github_new_repo_visibility`: Visibility of the new repository, choose **public**, **private** or **internal**.
 
@@ -62,14 +62,14 @@ You will also need:
      - `azd_dev_env_subscription`: Your Azure subscription ID.
      - `azd_dev_env_location`: The Azure region for your dev environment. Ex: *eastus2*.
 
-    > The dev environment resources will be created in the selected subscription and region. This decision should consider the quota available for the resources to be created in the region, as well as the fact that some resources have specific features enabled only in certain regions. Therefore, ensure that the resources to be created by the IaC of your template project have quota and availability in the chosen subscription and region. More information about the resources to be created can be found on the template page, as shown in this project template example: [LLMOps Project Template Resources](https://github.com/Azure/llmops-project-template/blob/main/README.md#project-resources).
+    > The dev environment resources will be created in the selected subscription and region. This decision should consider the quota available for the resources to be created in the region, as well as the fact that some resources have specific features enabled only in certain regions. Therefore, ensure that the resources to be created by the IaC of your template project have quota and availability in the chosen subscription and region. More information about the resources to be created can be found on the template page, as shown in this project template example: [GenAIOps Project Template Resources](https://github.com/Azure/GenAIOps-project-template/blob/main/README.md#project-resources).
 
    Here is an example of the `bootstrap.properties` file:
 
    ```properties
    github_username="placerda"
    github_use_ssh="true"
-   github_template_repo="azure/llmops-project-template"
+   github_template_repo="azure/GenAIOps-project-template"
    github_new_repo="placerda/my-rag-project"
    github_new_repo_visibility="public"
    azd_dev_env_provision="true"

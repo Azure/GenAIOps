@@ -1,8 +1,8 @@
-# Azure LLMOps Solution Accelerator
+# Azure GenAIOps Solution Accelerator
 
-![Header](media/llmopsheader.png)
+![Header](media/genaiopsheader.png)
 
-Welcome to the LLMOps Solution Accelerator! This project provides a ready-to-run LLMOps solution, with a primary focus on CI/CD pipeline implementation. It includes essential concepts designed to help you seamlessly adopt LLMOps practices into your projects.
+Welcome to the GenAIOps Solution Accelerator! This project provides a ready-to-run GenAIOps solution, with a primary focus on CI/CD pipeline implementation. It includes essential concepts designed to help you seamlessly adopt GenAIOps practices into your projects.
  
 ## Highlights
 
@@ -19,7 +19,7 @@ Explore this set of articles to navigate and implement the accelerator smoothly.
 1. [Repository Structure](documentation/repository_structure.md): Describes how the repository structure is organized.
 2. [Git Workflow and Pipelines](documentation/git_workflow.md): Explains the Git workflow and CI/CD pipelines used in the accelerator.
 3. [Reference Architecture](documentation/reference_architecture.md): Reference architecture that this accelerator is based on.
-1. [RAG Project Template](https://github.com/azure/llmops-project-template): Offers a ready-to-use RAG project template.
+1. [RAG Project Template](https://github.com/azure/GenAIOps-project-template): Offers a ready-to-use RAG project template.
 1. [LLM Project Roles](documentation/project_roles.md): Details the various roles in an LLM project and their responsibilities.
 
 ## How-to

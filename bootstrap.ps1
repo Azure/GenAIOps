@@ -127,7 +127,6 @@ gh api `
   -F "required_pull_request_reviews[require_code_owner_reviews]=false" `
   -F "required_pull_request_reviews[required_approving_review_count]=0" `
   -F "required_pull_request_reviews[require_last_push_approval]=false" `
-  -F "required_linear_history=true" `
   -F "allow_force_pushes=true" `
   -F "allow_deletions=true" `
   -F "block_creations=true" `

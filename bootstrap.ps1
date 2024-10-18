@@ -115,25 +115,26 @@ Set-Location ..
 Remove-Item -Recurse -Force "$github_template_repo_name.git"
 
 # develop branch protection rule
-gh api `
-  -X PUT `
-  -H "Accept: application/vnd.github+json" `
-  -H "X-GitHub-Api-Version: 2022-11-28" `
-  /repos/$github_new_repo/branches/develop/protection `
-  -F "required_status_checks[strict]=true" `
-  -F "required_status_checks[contexts][]=evaluate-flow" `
-  -F "enforce_admins=true" `
-  -F "required_pull_request_reviews[dismiss_stale_reviews]=false" `
-  -F "required_pull_request_reviews[require_code_owner_reviews]=false" `
-  -F "required_pull_request_reviews[required_approving_review_count]=0" `
-  -F "required_pull_request_reviews[require_last_push_approval]=false" `
-  -F "allow_force_pushes=true" `
-  -F "allow_deletions=true" `
-  -F "block_creations=true" `
-  -F "required_conversation_resolution=true" `
-  -F "lock_branch=false" `
-  -F "allow_fork_syncing=true" `
-  -F "restrictions=null"
+# NOTE: removed to make it more flexible in the workshop
+# gh api `
+#   -X PUT `
+#   -H "Accept: application/vnd.github+json" `
+#   -H "X-GitHub-Api-Version: 2022-11-28" `
+#   /repos/$github_new_repo/branches/develop/protection `
+#   -F "required_status_checks[strict]=true" `
+#   -F "required_status_checks[contexts][]=evaluate-flow" `
+#   -F "enforce_admins=true" `
+#   -F "required_pull_request_reviews[dismiss_stale_reviews]=false" `
+#   -F "required_pull_request_reviews[require_code_owner_reviews]=false" `
+#   -F "required_pull_request_reviews[required_approving_review_count]=0" `
+#   -F "required_pull_request_reviews[require_last_push_approval]=false" `
+#   -F "allow_force_pushes=true" `
+#   -F "allow_deletions=true" `
+#   -F "block_creations=true" `
+#   -F "required_conversation_resolution=true" `
+#   -F "lock_branch=false" `
+#   -F "allow_fork_syncing=true" `
+#   -F "restrictions=null"
 
 # Create GitHub environment named dev with specified variables
 gh api --method PUT -H "Accept: application/vnd.github+json" /repos/$github_new_repo/environments/dev

@@ -1,31 +1,33 @@
-# Azure GenAIOps Solution Accelerator
-
 ![Header](media/genaiopsheader.png)
 
-Welcome to the GenAIOps Solution Accelerator! This project provides a ready-to-run GenAIOps solution, with a primary focus on CI/CD pipeline implementation. It includes essential concepts designed to help you seamlessly adopt GenAIOps practices into your projects.
- 
+This repository provides practical guidance and applied recommendations for implementing GenAIOps using Azure services. While it does not aim to be an exhaustive or prescriptive guide, it presents a structured set of best practices and how-to resources tailored to typical scenarios encountered when developing GenAI applications on Azure. The content supports both newcomers and experienced teams refining their practices.
 ## Highlights
 
-- Bootstrap your project in under an hour
+- Learn how to bootstrap your project
 - Provision resources with Infrastructure as Code
 - Easy-to-configure and extend templates
-- Leverage Azure AI Studio
+- Leverage Azure AI Foundry
 
 
-## Documentation
+## Concepts
 
-Explore this set of articles to navigate and implement the accelerator smoothly. These resources clarify the repository structure, Git workflow, and reference architecture, providing a strong foundation for successful execution.
+Explore this set of articles to navigate and implement GenAIOps smoothly. These resources clarify the repository structure, Git workflow, and reference architecture, providing a strong foundation for successful execution.
 
-1. [Repository Structure](documentation/repository_structure.md): Describes how the repository structure is organized.
-2. [Git Workflow and Pipelines](documentation/git_workflow.md): Explains the Git workflow and CI/CD pipelines used in the accelerator.
-3. [Reference Architecture](documentation/reference_architecture.md): Reference architecture that this accelerator is based on.
-1. [RAG Project Template](https://github.com/azure/GenAIOps-project-template): Offers a ready-to-use RAG project template.
-1. [LLM Project Roles](documentation/project_roles.md): Details the various roles in an LLM project and their responsibilities.
+1. [Repository Structure](documentation/repository_structure.md)
+2. [Git Workflow and Pipelines](documentation/git_workflow.md)
+3. [Reference Architecture](documentation/reference_architecture.md)
+4. [Project Templates](documentation/project_template.md)
+5. [GenAIOps Team Roles](documentation/project_roles.md)
 
-## How-to
+## Labs & How-to
 
-1. [Bootstrapping a new Project](documentation/bootstrapping.md)
-2. [Delivering a new Feature](documentation/delivering_new_feature.md)
+Below are the step-by-step guides that form the hands-on exercises for the GenAIOps Workshop (and can be used standalone for practical implementation):
+
+1. [Bootstrapping a New Project](labs/bootstrapping.md)  
+2. [From Idea to Prototype](labs/prototyping.md)  
+3. [Building Your GenAI App](labs/building.md)  
+4. [Evaluating Your App Responses](labs/evaluating.md)  
+5. [Automating Deployment with CI/CD](labs/automating.md)  
 
 ## Contributing
 

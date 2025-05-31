@@ -1,7 +1,7 @@
 
-# Typical Roles in an LLM Project
+# Typical Roles in an GenAI Project
 
-This section outlines the key roles within an LLM project and their responsibilities, providing a clear understanding of each position's contributions. These roles are crucial for the successful implementation and management of the project. The following image provides a visual representation of these roles:
+This section focuses on the primary roles in a GenAI project and their responsibilities. The diagram below shows all project roles at a glance, while the following descriptions cover only the most critical ones:
 
 ![Header](../media/project_roles.png)
 

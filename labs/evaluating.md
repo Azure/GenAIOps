@@ -2,7 +2,7 @@
 
 In this lab, you’ll use the built-in evaluation harness in your orchestrator template to measure how well your agent answers real questions from the Contoso Electronics Employee Handbook. The template includes an `evaluations` folder with a Python script (`evaluate.py`) and a test dataset (`chat_eval_data.jsonl`). You will run that script from PowerShell, inspect the JSON output locally, then review the same results in the Azure AI Studio portal under your AI Foundry project’s **Evaluations** tab.
 
----
+
 
 ## Success Criteria
 
@@ -12,7 +12,7 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
 - You understand the key metrics produced (e.g., similarity scores)  
 - You can open the AI Foundry project in Azure Portal and view the evaluation entry  
 
----
+
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
   - A Python virtual environment activated, if you use one  
 
 - **Azure resources**  
-  - Active Azure subscription with the AI Hub project you provisioned in Labs 1–3  
+  - Active Azure subscription with the AI Foundry Project you provisioned in Labs 1–3  
   - AI Agent Service and Cognitive Services index loaded with the Employee Handbook  
   - App Configuration endpoint and AI Foundry connection string set as environment variables  
 
@@ -34,7 +34,7 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
   - `evaluations/dataset/chat_eval_data.jsonl`  
 </details>
 
----
+
 
 ## Task 1: Review the Evaluation Folder
 
@@ -49,7 +49,7 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
    - It wraps each query in a call to a `SimilarityEvaluator`  
    - Results are written to `evaluation/evaluation-results.json` and printed  
 
----
+
 
 ## Task 2: Install and Verify Dependencies
 
@@ -72,7 +72,7 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
        echo $Env:APP_CONFIG_ENDPOINT  
 ```
 
----
+
 
 ## Task 3: Execute the Evaluation Script
 
@@ -85,8 +85,8 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
 ```
 
 3. Observe the console:  
-   - The script will print “-----Summarized Metrics-----” followed by overall similarity scores  
-   - It will show “-----Tabular Result-----” with a preview of each query’s response vs. ground truth  
+   - The script will print “--Summarized Metrics--” followed by overall similarity scores  
+   - It will show “--Tabular Result--” with a preview of each query’s response vs. ground truth  
    - Finally, it will display the link to view results in AI Studio  
 
 4. Look for the output file at `evaluations/evaluation-results.json`. Open it in your editor to see the raw JSON, which includes:  
@@ -94,7 +94,7 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
    - `metrics`: aggregate scores (e.g., average, min, max similarity)  
    - `studio_url`: direct link to the evaluation entry in Azure Portal  
 
----
+
 
 ## Task 4: Inspect Local Results
 
@@ -107,11 +107,11 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
 
 3. Reflect on any low-scoring items—these indicate where your agent might need prompt tuning or more context data.
 
----
+
 
 ## Task 5: Review in Azure AI Studio
 
-1. In the Azure Portal, navigate to your AI Hub → your AI Foundry project.  
+1. In the Azure Portal, navigate to your AI Foundry project.  
 2. Select the **Evaluations** tab in AI Agent Service.  
 3. Find the entry named “evaluate_contoso_similarity” (or the name you see in your script).  
 4. Click the entry to explore:  
@@ -119,6 +119,6 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
    - Individual query cards showing query, response, ground truth, and similarity score  
    - Option to re-run the evaluation or compare with past runs  
 
----
+
 
 Congratulations! You have successfully run a similarity-based evaluation of your Contoso orchestrator and examined the results both locally and in AI Studio. Next up: Lab 5 – Automating Deployment with CI/CD.  

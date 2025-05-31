@@ -6,7 +6,7 @@ In this lab you’ll review your GenAI landing-zone architecture, explore the de
 
 _Above: the GenAI landing zone and AI Foundry Agent standard setup you provisioned with **azd provision**._
 
----
+
 
 ## Success Criteria
 
@@ -14,18 +14,18 @@ _Above: the GenAI landing zone and AI Foundry Agent standard setup you provision
 - Clone the GPT-RAG Orchestrator template and configure it against your existing azd environment  
 - Deploy the orchestrator Container App and successfully POST to `/orchestrator` endpoint  
 
----
+
 
 ## Task 1: Review Your Architecture in the Portal
 
 1. Open the Azure Portal and navigate to the **Resource Group** you created in Lab 1.  
 2. Verify these key resources exist:  
-   - Azure AI Hub project & AI Agent Service  
+   - Azure AI Foundry Project & AI Agent Service  
    - Azure Cognitive Services index (Employee Handbook)  
    - Container Apps environment (Infra and Orchestrator apps)  
 3. Explore networking settings, App Configuration, and any private endpoints.
 
----
+
 
 ## Task 2: Clone the Orchestrator Template
 
@@ -43,7 +43,7 @@ _Above: the GenAI landing zone and AI Foundry Agent standard setup you provision
    git checkout tags/v2.0.0  
 ```
 
----
+
 
 ## Task 3: Hook into Your Existing AZD Environment
 
@@ -56,7 +56,7 @@ _Above: the GenAI landing zone and AI Foundry Agent standard setup you provision
 
    _Do not create a new resource group – reuse your dev environment._
 
----
+
 
 ## Task 4: Explore the Orchestrator Code
 
@@ -66,7 +66,7 @@ _Above: the GenAI landing zone and AI Foundry Agent standard setup you provision
 
 3. Review how the agent is created, how thread/agent IDs are stored, and how `stream_response()` is called.
 
----
+
 
 ## Task 5: Deploy the Orchestrator
 
@@ -79,7 +79,7 @@ _Above: the GenAI landing zone and AI Foundry Agent standard setup you provision
    
        https://capp-vgo24eyyo4gf2-orchestrator.kindmushroom-0bbe9868.swedencentral.azurecontainerapps.io/orchestrator  
 
----
+
 
 ## Task 6: Test Your Endpoint
 
@@ -101,6 +101,6 @@ _Above: the GenAI landing zone and AI Foundry Agent standard setup you provision
    - “What is the process for requesting vacation?”  
    - “How do I enroll in the healthcare plan?”  
 
-----
+-
 
 Congratulations—you’ve deployed your GenAI orchestrator into your dev environment and verified end-to-end functionality!  

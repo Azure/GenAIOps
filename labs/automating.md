@@ -7,7 +7,7 @@ In this lab, you will configure GitHub Actions for your repo, inspect the two pi
 - Review the Pull Request and CI/CD pipeline YAML files  
 - Trigger the pipelines by opening a PR and merging into `develop`  
 
----
+
 
 ## Success Criteria
 
@@ -17,7 +17,7 @@ In this lab, you will configure GitHub Actions for your repo, inspect the two pi
 - A PR into `develop` triggers the “Pull Request Pipeline”  
 - A merge into `develop` triggers the “CI/CD Dev Pipeline” and deploys to your dev environment  
 
----
+
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ In this lab, you will configure GitHub Actions for your repo, inspect the two pi
 - A Service Principal with Contributor or Owner rights on your subscription  
 </details>
 
----
+
 
 ## Task 1: Create a Service Principal
 
@@ -46,7 +46,7 @@ az ad sp create-for-rbac --name "<your-sp-name>" \
 
 2. Copy the JSON output (contains `clientId`, `clientSecret`, `subscriptionId`, `tenantId`) and save it for the next step.  
 
----
+
 
 ## Task 2: Configure GitHub Environments
 
@@ -76,7 +76,7 @@ az ad sp create-for-rbac --name "<your-sp-name>" \
 
 5. Confirm your Environments page shows the variables and secret for `dev` (repeat for `qa` and `prod`).  
 
----
+
 
 ## Task 3: Review the GitHub Actions Workflows
 
@@ -87,16 +87,9 @@ az ad sp create-for-rbac --name "<your-sp-name>" \
 
 2. Open `.github/cicd_pipeline.yaml` (CI/CD Dev Pipeline):  
    - Triggers on pushes to `develop`.  
-   - Installs and verifies `azd`, logs into Azure CLI and `azd`, then runs:  
+   - Installs and verifies `azd`, logs into Azure CLI and `azd`, then runs azd deploy.
 
-```
-     azd init –e "$AZURE_ENV_NAME" –l "$AZURE_LOCATION" –s "$AZURE_SUBSCRIPTION_ID" ––no-prompt  
-     azd env set AZURE_RESOURCE_GROUP "$AZURE_RESOURCE_GROUP" ––no-prompt  
-     azd env refresh ––no-prompt  
-     azd deploy ––no-prompt  
-```
 
----
 
 ## Task 4: Execute the Feature-to-Deploy Workflow
 
@@ -124,6 +117,6 @@ az ad sp create-for-rbac --name "<your-sp-name>" \
 4. **Merge the PR** into `develop` once checks pass.  
    - The CI/CD Dev Pipeline will trigger, run `azd init` and `azd deploy`, and update your dev Container App.  
 
----
+
 
 Congratulations—you’ve configured end-to-end CI/CD for your GenAI project. Your tests and evaluations run automatically on PRs, and successful merges to `develop` deploy your orchestrator into the dev environment!  

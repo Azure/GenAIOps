@@ -6,15 +6,15 @@ In this lab, you will create a new GenAI application repository based on the GPT
 - Run **azd provision** to deploy all infrastructure via Bicep  
 - Understand where the template’s IaC components live and how to customize them  
 
----
+
 
 ## Success Criteria
 
 - A new repository exists in your GitHub (or Azure DevOps) account, created from the GPT-RAG template  
-- Your development environment resources (App Service, AI Hub project, Search index, etc.) are deployed in Azure  
+- Your development environment resources (App Service, AI Foundry Project, Search index, etc.) are deployed in Azure  
 - You know where to find and modify the Bicep files for custom environments  
 
----
+
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ In this lab, you will create a new GenAI application repository based on the GPT
   - _In production, you can scope down to least-privilege roles; Contributor is used here for simplicity._  
 </details>
 
----
+
 
 ## Task 1: Initialize from GPT-RAG Template
 
@@ -52,7 +52,7 @@ In this lab, you will create a new GenAI application repository based on the GPT
 
 **Tip:** To customize, click **Use this repository as a template** on GitHub (creating a new repo with no upstream link) or fork the original. Then edit any files under `infra/` to match your organization’s standards.
 
----
+
 
 ## Task 2: Provision Your Development Environment
 
@@ -66,22 +66,22 @@ In this lab, you will create a new GenAI application repository based on the GPT
 
 3. In the Azure Portal, verify creation of:  
    - App Service instance  
-   - Azure AI Hub project  
+   - Azure AI Foundry Project  
    - Azure Cognitive Search index  
    - Other resources defined in `main.bicep`
 
----
+
 
 ## Task 3: Verify and Explore
 
 1. Inspect the `infra/` directory:  
    - `main.bicep` defines your core resources.  
-   - `modules/` contains reusable components (App Service, Storage, AI Hub, etc.).  
+   - `modules/` contains reusable components (App Service, Storage, AI Foundry, etc.).  
 2. Review CI/CD pipeline definitions:  
    - `.github/workflows/` for GitHub Actions  
    - `.azdo/` for Azure DevOps pipelines  
 3. Browse to your orchestrator endpoint URL (displayed by `azd provision`) and confirm it returns a “404 Not Found”—indicating the app is deployed and ready to accept requests.
 
----
+
 
 Congratulations—you’ve successfully bootstrapped a new GenAI project using the GPT-RAG orchestrator template! You’re now ready to move on to Lab 2: From Idea to Prototype.

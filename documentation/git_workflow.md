@@ -1,10 +1,12 @@
 # Git Workflow and Pipelines
 
-On this page, you’ll see an example Git workflow you can adopt for your project, showing how branches and releases trigger automation pipelines. It’s inspired by the [Git flow](https://nvie.com/posts/a-successful-git-branching-model) model—widely used to manage multiple environments like **dev**, **qa**, and **prod**—but feel free to adapt it to your needs.
+This section presents a practical Git workflow example that illustrates how branches and releases can trigger automation pipelines. Based on the popular [Git flow](https://nvie.com/posts/a-successful-git-branching-model) model, it helps manage multiple environments—**dev**, **qa**, and **prod**—but can be adapted to fit your project's needs.
+
 
 ## Overview
 
-The diagram below illustrates our workflow for delivering a new feature (here “Feature X”) as part of version 1.0.0. Each automated pipeline ensures code quality, runs AI-assisted evaluations, and deploys to the appropriate environment.
+The diagram below illustrates our workflow for delivering a new feature (here “Feature X”) as part of rekease 1.3.0. Each automated pipeline plays a role in the process—some ensure code quality or run AI-assisted evaluations, while others handle deployment to the appropriate environment.
+
 
 ![Git Workflow](../media/git_workflow_branching.png)
 

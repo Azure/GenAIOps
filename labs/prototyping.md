@@ -6,7 +6,7 @@ In this lab, you will select and compare AI models in Azure AI Foundry, then pro
 - Run a **model comparison** using the 4.1 baseline model  
 - Launch the **Agent Playground**, hook up your RAG index, and test an agent  
 
----
+
 
 ## Success Criteria
 
@@ -14,7 +14,7 @@ In this lab, you will select and compare AI models in Azure AI Foundry, then pro
 - You’ve run a side-by-side comparison of the 4.1 model against another candidate  
 - You’ve created an agent in the playground, connected it to the Contoso Electronics Employee Handbook index, and tested it with sample queries  
 
----
+
 
 ## Prerequisites
 
@@ -22,18 +22,18 @@ In this lab, you will select and compare AI models in Azure AI Foundry, then pro
 <summary>Expand to view prerequisites</summary>
 
 ### Required Tools & Access  
-- **Azure Portal** access with contributor rights on your AI Hub  
+- **Azure Portal** access with contributor rights on your AI Foundry  
 - **Azure AI Foundry** enabled in your subscription  
 - The Contoso Electronics **Employee Handbook** indexed in Azure Cognitive Services (from Lab 1)  
 - Familiarity with the Azure Portal UI  
 
 </details>
 
----
+
 
 ## Task 1: Browse the Model Catalog
 
-1. In the Azure Portal, navigate to your **AI Hub** from Lab 1.  
+1. In the Azure Portal, navigate to your **AI Foundry** from Lab 1.  
 2. Select **AI Agent Service** → **Model Catalog**.  
 3. Observe the list of available models (e.g., “gpt-4o”, “gpt-4o-mini”, “gpt-4.1”, etc.).  
 4. Click **gpt-4.1** to view details:  
@@ -43,7 +43,7 @@ In this lab, you will select and compare AI models in Azure AI Foundry, then pro
 
 > **Highlight:** Model details help you choose the right balance of capability, cost, and latency.
 
----
+
 
 ## Task 2: Run a Model Comparison
 
@@ -58,7 +58,7 @@ In this lab, you will select and compare AI models in Azure AI Foundry, then pro
 
 > **Tip:** Note which model gives the most accurate handbook summary with acceptable performance.
 
----
+
 
 ## Task 3: Prototype in the Agent Playground
 
@@ -92,6 +92,6 @@ In this lab, you will select and compare AI models in Azure AI Foundry, then pro
 
 > **Insight:** Grounded responses pull direct passages from the indexed handbook, ensuring accuracy.
 
----
+
 
 Congratulations—you’ve completed Lab 2! You’ve explored model options, compared a baseline, and built a prototype agent grounded in your Contoso Electronics Employee Handbook. Next up: Lab 3, where you’ll implement core GenAI app features in code.  

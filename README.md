@@ -1,10 +1,9 @@
 ![Header](media/genaiopsheader.png)
 
-This repository provides practical guidance and applied recommendations for implementing GenAIOps using Azure services. While it does not aim to be an exhaustive or prescriptive guide, it presents a structured set of best practices and how-to resources tailored to typical scenarios encountered when developing GenAI applications on Azure. The content is designed to support both individuals just getting started and experienced teams looking to refine their practices.
-
+This repository provides practical guidance and applied recommendations for implementing GenAIOps using Azure services. While it does not aim to be an exhaustive or prescriptive guide, it presents a structured set of best practices and how-to resources tailored to typical scenarios encountered when developing GenAI applications on Azure. The content supports both newcomers and experienced teams refining their practices.
 ## Highlights
 
-- Learn how to bootstrap your project in under an hour
+- Learn how to bootstrap your project
 - Provision resources with Infrastructure as Code
 - Easy-to-configure and extend templates
 - Leverage Azure AI Foundry

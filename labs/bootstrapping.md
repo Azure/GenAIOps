@@ -43,7 +43,7 @@ In this lab, you will create a new GenAI application repository based on the GPT
 2. Run the following command:  
 
 ```
-   azd init -t azure/gpt-rag -b v2.0.0  
+   azd init -t azure/gpt-rag -b feature/vnext-architecture
 ```
 
 3. Follow the prompts to sign in, select your Azure account, and choose or create a resource group.  
@@ -51,7 +51,6 @@ In this lab, you will create a new GenAI application repository based on the GPT
 4. Observe that this template includes an `infra/` directory containing Bicep files that define all necessary resources.
 
 **Tip:** To customize, click **Use this repository as a template** on GitHub (creating a new repo with no upstream link) or fork the original. Then edit any files under `infra/` to match your organization’s standards.
-
 
 
 ## Task 2: Provision Your Development Environment

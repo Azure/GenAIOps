@@ -1,6 +1,6 @@
 # Bootstrapping a New Project
 
-In this lab, you will create a new GenAI application repository based on the GPT-RAG orchestrator template (v2.0.0) and provision your development infrastructure with a single command. You’ll learn how to:
+In this lab, you will create a new GenAI application repository based on the GPT-RAG orchestrator template and provision your development infrastructure with a single command. You’ll learn how to:
 
 - Use **azd init** to instantiate a fresh repo from a template  
 - Run **azd provision** to deploy all infrastructure via Bicep  
@@ -21,17 +21,21 @@ In this lab, you will create a new GenAI application repository based on the GPT
 <details markdown="block">
 <summary>Expand to view prerequisites</summary>
 
-### Required Tools  
-- Azure CLI (`az`) – https://aka.ms/install-az  
-- Azure Developer CLI (`azd`) – https://aka.ms/install-azd  
-- GitHub CLI (`gh`) – https://cli.github.com/  
-- Git – https://git-scm.com/downloads  
+To deploy this template, you need:
 
-### You Will Also Need  
-- An **Azure subscription** with permissions to create resource groups and assign roles  
-- Access to **Azure OpenAI** (request via the Microsoft form if needed)  
-- Ability to create or use an existing **Service Principal** with at least **Contributor** role on your subscription  
-  - _In production, you can scope down to least-privilege roles; Contributor is used here for simplicity._  
+* An Azure subscription.
+* An Azure user with **Contributor** and **User Access Admin** permissions on the target resource group.
+
+In addition, the machine or environment used for deployment should have:
+
+- Azure Developer CLI: [Install azd](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/install-azd)
+- PowerShell 7+ (Windows only): [Install PowerShell](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.4#installing-the-msi-package)
+- Git: [Download Git](https://git-scm.com/downloads)
+- Python 3.12: [Download Python](https://www.python.org/downloads/release/python-3120/)
+- An Azure AI Services resource created or agreement to Responsible AI terms in the portal
+
+Note: To run the deployment automation lab, you need a Service Principal with Contributor or Owner permissions on your subscription.
+
 </details>
 
 

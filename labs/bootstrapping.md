@@ -43,7 +43,7 @@ In this lab, you will create a new GenAI application repository based on the GPT
 2. Run the following command:  
 
 ```
-   azd init -t azure/gpt-rag -b v2.0.0  
+   azd init -t azure/gpt-rag -b feature/vnext-architecture
 ```
 
 3. Follow the prompts to sign in, select your Azure account, and choose or create a resource group.  
@@ -51,7 +51,6 @@ In this lab, you will create a new GenAI application repository based on the GPT
 4. Observe that this template includes an `infra/` directory containing Bicep files that define all necessary resources.
 
 **Tip:** To customize, click **Use this repository as a template** on GitHub (creating a new repo with no upstream link) or fork the original. Then edit any files under `infra/` to match your organization’s standards.
-
 
 
 ## Task 2: Provision Your Development Environment
@@ -70,8 +69,6 @@ In this lab, you will create a new GenAI application repository based on the GPT
    - Azure Cognitive Search index  
    - Other resources defined in `main.bicep`
 
-
-
 ## Task 3: Verify and Explore
 
 1. Inspect the `infra/` directory:  
@@ -82,6 +79,4 @@ In this lab, you will create a new GenAI application repository based on the GPT
    - `.azdo/` for Azure DevOps pipelines  
 3. Browse to your orchestrator endpoint URL (displayed by `azd provision`) and confirm it returns a “404 Not Found”—indicating the app is deployed and ready to accept requests.
 
-
-
-Congratulations—you’ve successfully bootstrapped a new GenAI project using the GPT-RAG orchestrator template! You’re now ready to move on to Lab 2: From Idea to Prototype.
+Congratulations—you've successfully bootstrapped a new GenAI project using the GPT-RAG orchestrator template! You’re now ready to move on to Lab 2: From Idea to Prototype.

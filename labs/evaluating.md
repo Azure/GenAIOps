@@ -13,7 +13,6 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
 - You can open the AI Foundry project in Azure Portal and view the evaluation entry  
 
 
-
 ## Prerequisites
 
 <details markdown="block">
@@ -35,7 +34,6 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
 </details>
 
 
-
 ## Task 1: Review the Evaluation Folder
 
 1. In your code editor, open the `evaluations/` directory.  
@@ -49,8 +47,6 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
    - It wraps each query in a call to a `SimilarityEvaluator`  
    - Results are written to `evaluation/evaluation-results.json` and printed  
 
-
-
 ## Task 2: Install and Verify Dependencies
 
 1. In PowerShell, change directory to your project root.  
@@ -63,16 +59,12 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
 
 4. Ensure your environment variables are set:  
    - `APP_CONFIG_ENDPOINT`  
-   - `AI_FOUNDRY_PROJECT_CONNECTION_STRING`  
-   - `OPENAI_DEPLOYMENT_NAME`, etc.  
 
    You can verify by running:  
 
 ```      
        echo $Env:APP_CONFIG_ENDPOINT  
 ```
-
-
 
 ## Task 3: Execute the Evaluation Script
 
@@ -94,8 +86,6 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
    - `metrics`: aggregate scores (e.g., average, min, max similarity)  
    - `studio_url`: direct link to the evaluation entry in Azure Portal  
 
-
-
 ## Task 4: Inspect Local Results
 
 1. Open `evaluations/evaluation-results.json`.  
@@ -107,8 +97,6 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
 
 3. Reflect on any low-scoring items—these indicate where your agent might need prompt tuning or more context data.
 
-
-
 ## Task 5: Review in Azure AI Studio
 
 1. In the Azure Portal, navigate to your AI Foundry project.  
@@ -118,7 +106,5 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
    - Overall evaluation metrics dashboard  
    - Individual query cards showing query, response, ground truth, and similarity score  
    - Option to re-run the evaluation or compare with past runs  
-
-
 
 Congratulations! You have successfully run a similarity-based evaluation of your Contoso orchestrator and examined the results both locally and in AI Studio. Next up: Lab 5 – Automating Deployment with CI/CD.  

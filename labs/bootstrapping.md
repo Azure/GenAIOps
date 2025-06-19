@@ -15,7 +15,6 @@ In this lab, you will create a new GenAI application repository based on the GPT
 - You know where to find and modify the Bicep files for custom environments  
 
 
-
 ## Prerequisites
 
 <details markdown="block">
@@ -38,24 +37,37 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
 
 </details>
 
+## 🛠️ Task 1: Initialize from the GPT‑RAG Template
 
+1. **Open your terminal** and navigate to the folder where you keep your repositories. If you don’t have one yet, create it as shown below:
 
-## Task 1: Initialize from GPT-RAG Template
+   ```bash
+   mkdir workspace
+   cd workspace
+   ```
 
-1. Open your terminal and navigate to the folder where you want your project.  
+2. **Create a directory** for your GPT‑RAG template and enter it:
 
-2. Run the following command:  
+   ```bash
+   mkdir gpt-rag
+   cd gpt-rag
+   ```
 
-```
+3. **Initialize the project** using the Azure Developer CLI with the GPT‑RAG template:
+
+   ```bash
    azd init -t azure/gpt-rag -b feature/vnext-architecture
-```
+   ```
 
-3. Follow the prompts to sign in, select your Azure account, and choose or create a resource group.  
+4. **Follow the interactive prompts** to:
 
-4. Observe that this template includes an `infra/` directory containing Bicep files that define all necessary resources.
+   * Sign in to your Azure account
+   * Select your subscription
+   * Choose or create a resource group
+
+5. **Review the project structure.** You’ll find an `infra/` folder that contains Bicep files. These define all the Azure resources needed by the template.
 
 **Tip:** To customize, click **Use this repository as a template** on GitHub (creating a new repo with no upstream link) or fork the original. Then edit any files under `infra/` to match your organization’s standards.
-
 
 ## Task 2: Provision Your Development Environment
 
@@ -68,9 +80,9 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
 2. Wait for the deployment to complete. Review the CLI output for resource names and endpoints.  
 
 3. In the Azure Portal, verify creation of:  
-   - App Service instance  
+   - Azure Container Apps  
    - Azure AI Foundry Project  
-   - Azure Cognitive Search index  
+   - Azure AI Search index  
    - Other resources defined in `main.bicep`
 
 ## Task 3: Verify and Explore

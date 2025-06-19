@@ -98,4 +98,4 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
 
 3. Browse to your orchestrator endpoint URL (displayed by `azd provision`) and confirm it returns a "404 Not Found"—indicating the app is deployed and ready to accept requests.
 
-Congratulations—you've successfully bootstrapped a new GenAI project using the GPT-RAG orchestrator template! You’re now ready to move on to Lab 2: From Idea to Prototype.
+Congratulations—you've successfully bootstrapped a new GenAI project using the GPT-RAG orchestrator template! You’re now ready to move on to Lab: From Idea to Prototype.

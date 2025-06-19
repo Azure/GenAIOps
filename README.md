@@ -21,13 +21,18 @@ Explore this set of articles to navigate and implement GenAIOps smoothly. These 
 
 ## Labs & How-to
 
-Below are the step-by-step guides that form the hands-on exercises for the GenAIOps Workshop (and can be used standalone for practical implementation):
+The following step-by-step guides are the hands-on exercises for the GenAIOps Workshop. They are designed to be completed during the workshop but can also be used independently as practical implementation guides.
 
-1. [Bootstrapping a New Project](labs/bootstrapping.md)  
-2. [From Idea to Prototype](labs/prototyping.md)  
-3. [Building Your GenAI App](labs/building.md)  
-4. [Evaluating Your App Responses](labs/evaluating.md)  
-5. [Automating Deployment with CI/CD](labs/automating.md)  
+**Pre-work (Must be completed before the workshop begins):**
+
+* [Bootstrapping a New Project](labs/bootstrapping.md)
+
+**Workshop Labs:**
+
+1. [From Idea to Prototype](labs/prototyping.md)
+2. [Building Your GenAI App](labs/building.md)
+3. [Evaluating Your App Responses](labs/evaluating.md)
+4. [Automating Deployment with CI/CD](labs/automating.md)
 
 ## Contributing
 

@@ -24,7 +24,7 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
   - A Python virtual environment activated, if you use one  
 
 - **Azure resources**  
-  - Active Azure subscription with the AI Foundry Project you provisioned in Labs 1–3  
+  - Active Azure subscription with the AI Foundry Project you provisioned in bootstraping  
   - AI Agent Service and Cognitive Services index loaded with the Employee Handbook  
   - App Configuration endpoint and AI Foundry connection string set as environment variables  
 
@@ -107,4 +107,4 @@ In this lab, you’ll use the built-in evaluation harness in your orchestrator t
    - Individual query cards showing query, response, ground truth, and similarity score  
    - Option to re-run the evaluation or compare with past runs  
 
-Congratulations! You have successfully run a similarity-based evaluation of your Contoso orchestrator and examined the results both locally and in AI Studio. Next up: Lab 5 – Automating Deployment with CI/CD.  
+Congratulations! You have successfully run a similarity-based evaluation of your Contoso orchestrator and examined the results both locally and in AI Studio. Next up: Lab – Automating Deployment with CI/CD.  

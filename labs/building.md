@@ -1,6 +1,6 @@
 # Building Your GenAI App
 
-In this lab you’ll review your GenAI landing-zone architecture, explore the dev environment you provisioned in Lab 1, then deploy the orchestrator code from the GPT-RAG template into that same environment.
+In this lab you’ll review your GenAI landing-zone architecture, explore the dev environment you provisioned in bootstraping, then deploy the orchestrator code from the GPT-RAG template into that same environment.
 
 ![Architecture Overview](../media/ai_landing_zone.png)
 
@@ -15,7 +15,7 @@ _Above: the GenAI landing zone and AI Foundry Agent standard setup you provision
 
 ## Task 1: Review Your Architecture in the Portal
 
-1. Open the Azure Portal and navigate to the **Resource Group** you created in Lab 1.  
+1. Open the Azure Portal and navigate to the **Resource Group** you created in bootstraping.  
 2. Verify these key resources exist:  
    - Azure AI Foundry Project & AI Agent Service  
    - Azure Cognitive Services index (Employee Handbook)  

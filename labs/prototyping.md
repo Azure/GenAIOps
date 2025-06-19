@@ -12,7 +12,7 @@ In this lab, you will select and compare AI models in Azure AI Foundry, then pro
 ## Success Criteria
 
 - You can locate and explore models in the AI Agent Service catalog  
-- You’ve run a side-by-side comparison of the 4.1 model against another candidate  
+- You’ve run comparison between models  
 - You’ve created an agent in the playground, connected it to the Contoso Electronics Employee Handbook index, and tested it with sample queries  
 
 ## Prerequisites
@@ -58,19 +58,20 @@ In this lab, you will select and compare AI models in Azure AI Foundry, then pro
 
    * A. Under *Quality vs Cost*, select only the models you want to compare (e.g., `gpt-4.1` and `gpt-4.1-mini`).
    * B. Under *Quality vs Throughput*, select the same models again to compare performance.
-6. Observe how `gpt-4.1-mini` offers a good cost-benefit balance.
-7. In the *Trade-off Charts*, click directly on the `gpt-4.1-mini` bubble. A popup will appear.
-8. In the popup, click **Go to model details**.
-9. On the model detail page, click the **Use this model** button.
-10. In the "Deploy gpt-4.1-mini" dialog, click **Deploy** (you can use default options).
-11. After deployment is complete, you will be redirected to the deployment page.
-12. Click the blue **Open in playground** button.
-13. In the playground, ask:
+6. Observe how `gpt-4.1-mini` offers a good balance between quality, cost, and latency—often making it a solid option for early prototyping.
+7. Based on the insights from the model details and comparison charts, you now have enough information to confidently select a model to start building your prototype. For this use case, we will proceed with `gpt-4.1-mini`.
+8. In the *Trade-off Charts*, click directly on the `gpt-4.1-mini` bubble. A popup will appear.
+9. In the popup, click **Go to model details**.
+10. On the model detail page, click the **Use this model** button.
+11. In the "Deploy gpt-4.1-mini" dialog, click **Deploy** (you can use default options).
+12. After deployment is complete, you will be redirected to the deployment page.
+13. Click the blue **Open in playground** button.
+14. In the playground, ask:
 
     ```text
     What is Contoso Electronics?
     ```
-14. Note: The response will be generic based on public data. In the next task, you'll use Azure AI Search to ground responses using your Employee Handbook.
+15. Note: The response will be generic based on public data. In the next task, you'll use Azure AI Search to ground responses using your Employee Handbook.
 
 ---
 
@@ -179,6 +180,6 @@ To index the content, deploy the data ingestion service that chunks and indexes 
 ---
 
 **✅ Congratulations!**
-You’ve completed **Lab 2**: explored models, performed benchmarking, and built a prototype agent using real documentation from Contoso Electronics.
+You’ve completed **Lab 1**: explored models, performed benchmarking, and built a prototype agent using real documentation from Contoso Electronics.
 
-Up next: **Lab 3**, where you’ll implement GenAI app features in code.
+Up next: **Lab 1**, where you’ll implement GenAI app features in code.

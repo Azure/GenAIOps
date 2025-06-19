@@ -37,7 +37,7 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
 
 </details>
 
-## 🛠️ Task 1: Initialize from the GPT‑RAG Template
+## Task 1: Initialize from the GPT‑RAG Template
 
 1. **Open your terminal** and navigate to the folder where you keep your repositories. If you don’t have one yet, create it as shown below:
 
@@ -90,9 +90,11 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
 1. Inspect the `infra/` directory:  
    - `main.bicep` defines your core resources.  
    - `modules/` contains reusable components (App Service, Storage, AI Foundry, etc.).  
+
 2. Review CI/CD pipeline definitions:  
    - `.github/workflows/` for GitHub Actions  
    - `.azdo/` for Azure DevOps pipelines  
-3. Browse to your orchestrator endpoint URL (displayed by `azd provision`) and confirm it returns a “404 Not Found”—indicating the app is deployed and ready to accept requests.
+
+3. Browse to your orchestrator endpoint URL (displayed by `azd provision`) and confirm it returns a "404 Not Found"—indicating the app is deployed and ready to accept requests.
 
 Congratulations—you've successfully bootstrapped a new GenAI project using the GPT-RAG orchestrator template! You’re now ready to move on to Lab 2: From Idea to Prototype.

@@ -23,7 +23,6 @@ In this lab, you will select and compare AI models in Azure AI Foundry, then pro
 ### Required Tools & Access  
 - **Azure Portal** access with contributor rights on your AI Foundry  
 - **Azure AI Foundry** enabled in your subscription  
-- The Contoso Electronics **Employee Handbook** indexed in Azure Cognitive Services (from Lab 1)  
 - Familiarity with the Azure Portal UI  
 
 </details>
@@ -180,6 +179,6 @@ To index the content, deploy the data ingestion service that chunks and indexes 
 ---
 
 **✅ Congratulations!**
-You’ve completed **Lab 1**: explored models, performed benchmarking, and built a prototype agent using real documentation from Contoso Electronics.
+You’ve completed **From Idea to Prototype Lab**: explored models, performed benchmarking, and built a prototype agent using real documentation from Contoso Electronics.
 
-Up next: **Lab 1**, where you’ll implement GenAI app features in code.
+Up next: **Building Lab**, where you’ll implement GenAI app features in code.

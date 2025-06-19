@@ -1,4 +1,4 @@
-# Lab 4: Evaluating Your App Responses
+# Lab: Evaluating Your App Responses
 
 In this lab, you’ll use the built-in evaluation harness in your orchestrator template to measure how well your agent answers real questions from the Contoso Electronics Employee Handbook. The template includes an `evaluations` folder with a Python script (`evaluate.py`) and a test dataset (`chat_eval_data.jsonl`). You will run that script from PowerShell, inspect the JSON output locally, then review the same results in the Azure AI Studio portal under your AI Foundry project’s **Evaluations** tab.
 

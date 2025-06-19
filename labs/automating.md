@@ -1,4 +1,4 @@
-# Lab 5: Automating Deployment with CI/CD
+# Lab: Automating Deployment with CI/CD
 
 In this lab, you will configure GitHub Actions for your repo, inspect the two pipeline definitions, and run through the full feature-to-deploy workflow. You’ll learn how to:
 

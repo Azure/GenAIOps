@@ -1,5 +1,7 @@
 # Bootstrapping a New Project
 
+> 🎥 **Watch the walkthrough video**: [How to bootstrap your GenAI project](https://www.youtube.com/embed/nZMDtaDQuP4?autoplay=1)
+
 In this lab, you will create a new GenAI application repository based on the GPT-RAG orchestrator template and provision your development infrastructure with a single command. You’ll learn how to:
 
 - Use **azd init** to instantiate a fresh repo from a template  
@@ -13,7 +15,6 @@ In this lab, you will create a new GenAI application repository based on the GPT
 - A new repository exists in your GitHub (or Azure DevOps) account, created from the GPT-RAG template  
 - Your development environment resources (App Service, AI Foundry Project, Search index, etc.) are deployed in Azure  
 - You know where to find and modify the Bicep files for custom environments  
-
 
 ## Prerequisites
 

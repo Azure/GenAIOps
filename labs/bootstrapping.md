@@ -78,24 +78,12 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
    azd provision  
 ```
 
-2. Wait for the deployment to complete. Review the CLI output for resource names and endpoints.  
+2. Wait for the deployment to complete. Review the CLI output for resource names.  
 
 3. In the Azure Portal, verify creation of:  
    - Azure Container Apps  
    - Azure AI Foundry Project  
    - Azure AI Search index  
    - Other resources defined in `main.bicep`
-
-## Task 3: Verify and Explore
-
-1. Inspect the `infra/` directory:  
-   - `main.bicep` defines your core resources.  
-   - `modules/` contains reusable components (App Service, Storage, AI Foundry, etc.).  
-
-2. Review CI/CD pipeline definitions:  
-   - `.github/workflows/` for GitHub Actions  
-   - `.azdo/` for Azure DevOps pipelines  
-
-3. Browse to your orchestrator endpoint URL (displayed by `azd provision`) and confirm it returns a "404 Not Found"—indicating the app is deployed and ready to accept requests.
 
 Congratulations—you've successfully bootstrapped a new GenAI project using the GPT-RAG orchestrator template! You’re now ready to move on to Lab: From Idea to Prototype.

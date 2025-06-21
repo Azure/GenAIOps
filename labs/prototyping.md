@@ -15,15 +15,16 @@ In this lab, you will select and compare AI models in Azure AI Foundry, then pro
 - You’ve run comparison between models  
 - You’ve created an agent in the playground, connected it to the Contoso Electronics Employee Handbook index, and tested it with sample queries  
 
+
 ## Prerequisites
 
 <details markdown="block">
 <summary>Expand to view prerequisites</summary>
 
 ### Required Tools & Access  
-- **Azure Portal** access with contributor rights on your AI Foundry  
-- **Azure AI Foundry** enabled in your subscription  
-- Familiarity with the Azure Portal UI  
+
+- **Bootstraping**: Ensure you have completed the bootstraping process and have a running environment.  
+- **Docker Desktop**: [Download and install Docker Desktop](https://docs.docker.com/get-started/introduction/get-docker-desktop/).  
 
 </details>
 
@@ -111,6 +112,9 @@ To index the content, deploy the data ingestion service that chunks and indexes 
    > **Important:** Select the same environment name, resource group and location used during bootstrapping.
 
 ### B. Deploy the Ingestion Service
+
+> [!IMPORTANT]
+> Docker engine must be running to execute containerized applications in the next steps.
 
 6. Deploy the project:
 

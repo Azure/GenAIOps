@@ -12,29 +12,52 @@ _Above: the GenAI landing zone and AI Foundry Agent standard setup you provision
 - Clone the GPT-RAG Orchestrator template and configure it against your existing azd environment  
 - Deploy the orchestrator Container App and successfully POST to `/orchestrator` endpoint  
 
+## Prerequisites
+
+<details markdown="block">
+<summary>Expand to view prerequisites</summary>
+
+- **Bootstraping**: Ensure you have completed the bootstraping process and have a running environment. 
+
+### Required Tools & Access  
+ 
+- **Docker Desktop**: [Download and install Docker Desktop](https://docs.docker.com/get-started/introduction/get-docker-desktop/).  
+
+</details>
+
 
 ## Task 1: Review Your Architecture in the Portal
 
 1. Open the Azure Portal and navigate to the **Resource Group** you created in bootstraping.  
 2. Verify these key resources exist:  
    - Azure AI Foundry Project & AI Agent Service  
-   - Azure Cognitive Services index (Employee Handbook)  
+   - Azure AI Search Service with rag index
    - Container Apps environment (Infra and Orchestrator apps)  
 3. Explore networking settings, App Configuration, and any private endpoints.
 
 ## Task 2: Clone the Orchestrator Template
 
 1. In your browser, go to https://github.com/Azure/gpt-rag-orchestrator.git  
-2. Click **Use this repository as a template**, name it (e.g. contoso-orchestrator), and create.  
-3. Clone your new repo locally and change directory:  
+2. Click the green button **Use this template**, name it (e.g. contoso-orchestrator), and create.  
+
+> [!IMPORTANT]
+> Make sure to select `include all branches`
+
+![Test Image](../media/building_create_gh_project.png)
+
+3. Back to your terminal go to the workspace folder you created before (if you're not there yet):
+```   
+   cd workspace
+```
+4. Clone your new repo locally and change directory:  
 ```   
    git clone https://github.com/<your-org>/contoso-orchestrator.git  
    cd contoso-orchestrator
 ```
 
-4. Check out feature/vnext-architecture branch:  
+4. Switch to the feature/vnext-architecture branch:  
 ```
-   git checkout feature/vnext-architecture 
+   git switch feature/vnext-architecture 
 ```
 
 ## Task 3: Hook into Your Existing AZD Environment
@@ -65,26 +88,29 @@ You’ll see that it's possible to choose the agent strategy. In our example, we
 1. Deploy to Azure Container Apps:  
 ```
        azd deploy  
-```
-       
-2. Wait for the CLI to finish and note your orchestrator URL, for example:  
-   
-       https://capp-vgo24eyyo4gf2-orchestrator.kindmushroom-0bbe9868.swedencentral.azurecontainerapps.io/orchestrator  
+``` 
 
+2. Wait for the CLI to finish and get your orchestrator app url in the portal:  
+
+
+![Test Image](../media/building_httpio.png)
 
 ## Task 6: Test Your Endpoint
 
-1. In any REST client like [HTTPie](https://httpie.io/), send a POST to your orchestrator URL with JSON body:  
+1. In any REST client like [HTTPie](https://httpie.io/app), send a POST to your orchestrator URL with the url followed by `/orchestrator`, for example:
+
+
+       https://capp-vgo24eyyo4gf1-orchestrator.kindmushroom-0bbe9868.swedencentral.azurecontainerapps.io/orchestrator  
+
+and this JSON body:  
 ```
        {
          "conversation_id": "",
-         "ask": "Describe the Contoso Electronics employee benefits program.",
-         "client_principal_id": "abc12345-6789-4def-0123-456789abcdef",
-         "client_principal_name": "johndoe@example.com",
-         "client_group_names": ["genai-users","hr-team"],
-         "access_token": "dummy"
+         "ask": "Describe the Contoso Electronics employee benefits program."
        }  
 ```
+
+![Test Image](../media/building_httpio.png)
 
 2. Confirm you receive a streamed, handbook-grounded response.  
 

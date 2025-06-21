@@ -8,8 +8,6 @@ In this lab, you will create a new GenAI application repository based on the GPT
 - Run **azd provision** to deploy all infrastructure via Bicep  
 - Understand where the template’s IaC components live and how to customize them  
 
-
-
 ## Success Criteria
 
 - A new repository exists in your GitHub (or Azure DevOps) account, created from the GPT-RAG template  
@@ -57,14 +55,12 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
 3. **Initialize the project** using the Azure Developer CLI with the GPT‑RAG template:
 
    ```bash
-   azd init -t azure/gpt-rag -b feature/vnext-architecture
+   azd init -t azure/gpt-rag -b genaiops-workshop
    ```
 
 4. **Follow the interactive prompts** to:
 
-   * Sign in to your Azure account
-   * Select your subscription
-   * Choose or create a resource group
+   * Select your azd environment name
 
 5. **Review the project structure.** You’ll find an `infra/` folder that contains Bicep files. These define all the Azure resources needed by the template.
 
@@ -72,15 +68,38 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
 
 ## Task 2: Provision Your Development Environment
 
-1. From the project folder, run:  
+1. Login to azure:  
+
+```
+   az login 
+```
+
+2. From the project folder (gpt-rag), run:  
 
 ```
    azd provision  
 ```
 
-2. Wait for the deployment to complete. Review the CLI output for resource names.  
+3. **Follow the interactive prompts** to:
 
-3. In the Azure Portal, verify creation of:  
+   * Select your subscription
+   * Create a new resource group
+   * Choose your lacation
+
+> [!Tip]
+> Preferably select eastus2
+
+4. Wait for the deployment to complete. Review the CLI output for resource names.  
+
+...
+
+![Provisioning Resources](../media/bootstraping_provisioning_001.png)
+
+...
+
+![Provisioning Resources](../media/bootstraping_provisioning_002.png)
+
+5. In the Azure Portal, verify creation of:  
    - Azure Container Apps  
    - Azure AI Foundry Project  
    - Azure AI Search index  

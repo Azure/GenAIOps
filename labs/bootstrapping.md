@@ -8,8 +8,6 @@ In this lab, you will create a new GenAI application repository based on the GPT
 - Run **azd provision** to deploy all infrastructure via Bicep  
 - Understand where the template’s IaC components live and how to customize them  
 
-
-
 ## Success Criteria
 
 - A new repository exists in your GitHub (or Azure DevOps) account, created from the GPT-RAG template  
@@ -57,7 +55,7 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
 3. **Initialize the project** using the Azure Developer CLI with the GPT‑RAG template:
 
    ```bash
-   azd init -t azure/gpt-rag -b feature/genaiops-workshop
+   azd init -t azure/gpt-rag -b genaiops-workshop
    ```
 
 4. **Follow the interactive prompts** to:

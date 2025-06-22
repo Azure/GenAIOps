@@ -2,7 +2,7 @@
 
 > 🎥 **Watch the step-by-step demo**: [Evaluating your App](https://www.youtube.com/embed/Pv2FHpBlh0Q?autoplay=1)
 
-In this lab, you’ll use the built-in evaluation harness in gpt-rag orchestrator template to measure how well your agent answers real questions from your knowledge base (e.g., the Contoso Electronics Employee Handbook). The template includes an `evaluations` folder with a Python script (`evaluate.py`) and a test dataset (`chat_eval_data.jsonl`). You will run that script from PowerShell (or a shell), inspect the JSON output locally, then review the same results in the Azure AI Foundry portal under your AI Foundry project’s **Evaluations** tab.
+In this lab, you’ll use the built-in evaluation harness in gpt-rag orchestrator template to measure how well your agent answers real questions from your knowledge base (e.g., the Contoso Electronics Employee Handbook). The template includes an `evaluations` folder with a Python script (`evaluate.py`) and a test dataset (`golden-dataset.jsonl`). You will run that script from PowerShell (or a shell), inspect the JSON output locally, then review the same results in the Azure AI Foundry portal under your AI Foundry project’s **Evaluations** tab.
 
 ## Success Criteria
 

@@ -1,110 +1,134 @@
 # Lab: Evaluating Your App Responses
 
-In this lab, you’ll use the built-in evaluation harness in your orchestrator template to measure how well your agent answers real questions from the Contoso Electronics Employee Handbook. The template includes an `evaluations` folder with a Python script (`evaluate.py`) and a test dataset (`chat_eval_data.jsonl`). You will run that script from PowerShell, inspect the JSON output locally, then review the same results in the Azure AI Studio portal under your AI Foundry project’s **Evaluations** tab.
+> 🎥 **Watch the step-by-step demo**: [Evaluating your App](https://www.youtube.com/embed/Pv2FHpBlh0Q?autoplay=1)
 
-
+In this lab, you’ll use the built-in evaluation harness in gpt-rag orchestrator template to measure how well your agent answers real questions from your knowledge base (e.g., the Contoso Electronics Employee Handbook). The template includes an `evaluations` folder with a Python script (`evaluate.py`) and a test dataset (`chat_eval_data.jsonl`). You will run that script from PowerShell (or a shell), inspect the JSON output locally, then review the same results in the Azure AI Foundry portal under your AI Foundry project’s **Evaluations** tab.
 
 ## Success Criteria
 
-- You can locate and inspect the evaluation code and data in your cloned repo  
-- All Python dependencies are installed and environment variables are loaded correctly  
-- The evaluation script runs without errors and writes its results to `evaluation/evaluation-results.json`  
-- You understand the key metrics produced (e.g., similarity scores)  
-- You can open the AI Foundry project in Azure Portal and view the evaluation entry  
-
+* Locate and inspect evaluation code and data in your cloned repository
+* Install all Python dependencies and load environment variables correctly
+* Run the evaluation script.
+* Understand the key metrics produced (e.g., similarity scores)
+* Open the AI Foundry project in Azure Portal and view the evaluation entry
 
 ## Prerequisites
 
 <details markdown="block">
 <summary>Click to expand prerequisites</summary>
 
-- **Local environment**  
-  - PowerShell (or Windows Terminal) with Python 3.11  
-  - Your cloned orchestrator repo at the v2.0.0 tag  
-  - A Python virtual environment activated, if you use one  
+* **Bootstrap**: Complete the bootstrapping lab and have a running environment.
+* **Prototyping and Building**: Finish the prototyping and building labs.
+* **Tools**:
 
-- **Azure resources**  
-  - Active Azure subscription with the AI Foundry Project you provisioned in bootstraping  
-  - AI Agent Service and Cognitive Services index loaded with the Employee Handbook  
-  - App Configuration endpoint and AI Foundry connection string set as environment variables  
+  * **Visual Studio Code** (or your preferred editor).
+  * **Azure CLI** installed and authenticated (`az login`).
+  * **PowerShell** (Windows) or a compatible shell.
+  
 
-- **Files in place**  
-  - `evaluations/evaluate.py`  
-  - `evaluations/dataset/chat_eval_data.jsonl`  
 </details>
 
+## Task 1: Update Your Agent Model
 
-## Task 1: Review the Evaluation Folder
+Before running evaluations, update your agent’s chat model to ensure consistency with the lab assumptions. In the AI Foundry portal, update the model deployment used by your agent to **chat**.
 
-1. In your code editor, open the `evaluations/` directory.  
+1. In the Azure Portal, navigate to your AI Foundry project.
+2. Go to the **Agents** page and select the agent you created.
+3. On the agent page, select the **chat** model deployment and save it.
 
-2. Confirm you see two items:  
-   - `evaluate.py` (the orchestration evaluation script)  
-   - `dataset/chat_eval_data.jsonl` (JSON Lines file with sample queries and ground truth)  
+![Evaluating](../media/evaluating_selecting_model.png)
 
-3. Skim through `evaluate.py` to note:  
-   - It uses FastAPI’s TestClient to invoke your `/orchestrator` endpoint  
-   - It wraps each query in a call to a `SimilarityEvaluator`  
-   - Results are written to `evaluation/evaluation-results.json` and printed  
+## Task 2: Locate Evaluation Code and Data
 
-## Task 2: Install and Verify Dependencies
+1. Open a terminal and navigate to your local repository:
 
-1. In PowerShell, change directory to your project root.  
+   ```bash
+   cd workspace/contoso-orchestrator
+   ```
 
-2. If you haven’t already, install the required packages:  
-      
-       pip install -r requirements.txt  
+2. Ensure you are on the correct branch (e.g., `genaiops-workshop`):
 
-3. Confirm that `azure-ai-projects`, `azure-ai-evaluation`, `azure-identity`, `pandas`, and `fastapi` are all installed.  
+   ```bash
+   git switch genaiops-workshop
+   ```
 
-4. Ensure your environment variables are set:  
-   - `APP_CONFIG_ENDPOINT`  
+3. Open the project in Visual Studio Code (or your editor):
 
-   You can verify by running:  
+   ```bash
+   code .
+   ```
 
-```      
-       echo $Env:APP_CONFIG_ENDPOINT  
-```
+4. Verify you see:
 
-## Task 3: Execute the Evaluation Script
+   * `evaluations/generate_eval_input.py`: generates evaluation input data.
+   * `evaluations/evaluate.py`: runs the AI Foundry evaluation.
+   * `evaluations/dataset/golden-dataset.jsonl`: JSON Lines file with sample queries and ground truth.
 
-1. Change directory into the `evaluations` folder.  
+5. Open these files to familiarize yourself with the data format and evaluation logic.
 
-2. Run the evaluation script:  
+## Task 3: Review Evaluation Scripts
 
-```      
-   python .\evaluate.py  
-```
+1. In `generate_eval_input.py`, inspect how test queries and expected responses are formatted and prepared.
+2. In `evaluate.py`, review which evaluators and metrics are used (e.g., similarity evaluators).
 
-3. Observe the console:  
-   - The script will print “--Summarized Metrics--” followed by overall similarity scores  
-   - It will show “--Tabular Result--” with a preview of each query’s response vs. ground truth  
-   - Finally, it will display the link to view results in AI Studio  
+> **Tip:** Understanding the metrics helps interpret results and adjust your agent if needed.
 
-4. Look for the output file at `evaluations/evaluation-results.json`. Open it in your editor to see the raw JSON, which includes:  
-   - `rows`: an array of individual query results  
-   - `metrics`: aggregate scores (e.g., average, min, max similarity)  
-   - `studio_url`: direct link to the evaluation entry in Azure Portal  
+## Task 4: Configure Environment and Run Evaluation
 
-## Task 4: Inspect Local Results
+1. **Azure CLI Login**: Ensure you are authenticated:
 
-1. Open `evaluations/evaluation-results.json`.  
-2. Identify one example row and check:  
-   - `query` matches your input from `chat_eval_data.jsonl`  
-   - `response` is the text returned by your orchestrator  
-   - `ground_truth` matches the expected answer  
-   - `similarity` shows how closely the response aligns with the truth  
+   ```powershell
+   az login
+   ```
 
-3. Reflect on any low-scoring items—these indicate where your agent might need prompt tuning or more context data.
+2. **Set environment variables**: Export the App Configuration endpoint that the evaluation scripts expect. 
 
-## Task 5: Review in Azure AI Studio
+In PowerShell (Windows):
 
-1. In the Azure Portal, navigate to your AI Foundry project.  
-2. Select the **Evaluations** tab in AI Agent Service.  
-3. Find the entry named “evaluate_contoso_similarity” (or the name you see in your script).  
-4. Click the entry to explore:  
-   - Overall evaluation metrics dashboard  
-   - Individual query cards showing query, response, ground truth, and similarity score  
-   - Option to re-run the evaluation or compare with past runs  
+   ```powershell
+   $Env:APP_CONFIG_ENDPOINT = "https://<your-app-config-name>.azconfig.io"
+   ```
 
-Congratulations! You have successfully run a similarity-based evaluation of your Contoso orchestrator and examined the results both locally and in AI Studio. Next up: Lab – Automating Deployment with CI/CD.  
+   Or in Bash (macOS/Linux):
+
+   ```bash
+   export APP_CONFIG_ENDPOINT="https://<your-app-config-name>.azconfig.io"
+   ```
+
+3. **Run the evaluation script**:
+
+   * In PowerShell (Windows):
+
+     ```powershell
+     .\evaluations\evaluate.ps1
+     ```
+   * In Bash (macOS/Linux):
+
+     ```bash
+     ./evaluations/evaluate.sh
+     ```
+
+4. The script will generate input, submit the evaluation to AI Foundry.
+
+5. The script typically prints a URL or ID to view the evaluation run in the AI Foundry portal.
+
+> **Note:** Evaluation may take a few minutes. Be patient and monitor console output for any errors.
+
+## Task 5: Inspect Results in AI Foundry Portal
+
+1. **Portal Inspection**:
+
+   1. Click the link provided by the script output to go directly to the evaluation page in AI Foundry Portal.
+
+   or
+
+   1. In the Azure Portal, navigate to your AI Foundry project.
+   2. Select the **Evaluations** tab.
+   3. Locate the latest evaluation entry (by timestamp or ID printed by the script).
+   4. Click into the entry and review summary metrics.
+   5. Go to the **Data** (or **Details**) section to see per-query results and any additional diagnostic information.
+
+
+## Conclusion
+
+Congratulations! You have successfully run an evaluation of your GenAI App and examined the results both locally and in the AI Foundry Portal. Next up: Lab – Automating Deployment with CI/CD.

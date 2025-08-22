@@ -27,18 +27,58 @@ In this lab, you will configure GitHub Actions for your repo, inspect the two pi
 - A Service Principal with Contributor or Owner rights on your subscription  
 </details>
 
+Perfect — here’s your **Task 1** rewritten cleanly, in English, with both the **CLI one-liner** (works in Bash and PowerShell) and the **Portal alternative** (with a callout note about copying the secret).
+
+---
+
 ## Task 1: Create a Service Principal
 
-1. In a terminal, run:  
+You need a Service Principal so GitHub Actions can authenticate with Azure during deployments. You can create it either with the **Azure CLI** (recommended) or via the **Azure Portal** (alternative, useful for documentation).
+
+---
+
+### Option A: Using Azure CLI (Recommended)
+
+1. Open a terminal (PowerShell, Bash, or Azure Cloud Shell) and run this one-liner:
 
 ```bash
-az ad sp create-for-rbac --name "<your-sp-name>" \
-  --role Owner \
-  --scopes /subscriptions/<your-subscription-id> \
-  --sdk-auth
+az ad sp create-for-rbac --name "<your-sp-name>" --role Owner --scopes /subscriptions/<your-subscription-id> --sdk-auth
 ```
 
-2. Copy the JSON output (contains `clientId`, `clientSecret`, `subscriptionId`, `tenantId`) and save it for the next step.  
+2. The command returns a JSON block containing:
+
+* `clientId`
+* `clientSecret`
+* `subscriptionId`
+* `tenantId`
+
+Save this JSON securely — you will use it in the next task when creating GitHub Secrets.
+
+### Option B: Using the Azure Portal (Alternative)
+
+1. Navigate to **Azure Portal → Microsoft Entra ID → App registrations → New registration**.
+
+   * Enter a name (e.g., `sp-gpt-rag`).
+   * Select **Accounts in this organizational directory only (Single tenant)**.
+   * Click **Register**.
+
+2. After registration, go to **Certificates & secrets → Client secrets → New client secret**.
+
+   * Enter a description (e.g., `sp-gpt-rag-secret`).
+   * Choose an expiration period.
+   * Click **Add**.
+   * Copy the **Value** immediately — this is your `clientSecret`.
+
+3. Collect the following values for later use:
+
+   * **Application (client) ID** → `clientId`
+   * **Directory (tenant) ID** → `tenantId`
+   * **Secret Value** (copied from step 2) → `clientSecret`
+   * **Subscription ID** → `subscriptionId` (from your Azure subscription)
+
+⚠️ **Important:** The client secret **Value** is only visible once, right after you create it. Be sure to copy and store it securely.
+
+👉 Whether you use the CLI or the Portal, the end result is the same: you have the four required values (`clientId`, `clientSecret`, `subscriptionId`, `tenantId`) to use as credentials in GitHub.
 
 ## Task 2: Configure GitHub Environments
 

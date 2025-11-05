@@ -5,7 +5,7 @@ This section presents a practical Git workflow example that illustrates how bran
 
 ## Overview
 
-The diagram below illustrates our workflow for delivering a new feature (here “Feature X”) as part of rekease 1.3.0. Each automated pipeline plays a role in the process—some ensure code quality or run AI-assisted evaluations, while others handle deployment to the appropriate environment.
+The diagram below illustrates our workflow for delivering a new feature (here “Feature X”) as part of release 1.0.0. Each automated pipeline plays a role in the process—some ensure code quality or run AI-assisted evaluations, while others handle deployment to the appropriate environment.
 
 
 ![Git Workflow](../media/git_workflow_branching.png)
@@ -15,28 +15,10 @@ The diagram below illustrates our workflow for delivering a new feature (here �
 1. **Create a Feature Branch**
    Create a new branch off of **develop** for your work on Feature X:
 
-   ```bash
-   git checkout develop
-   git pull origin develop
-   git checkout -b feature/feature_x
-   ```
-
    Do all your development in `feature/feature_x`.
 
 2. **Open a PR to develop**
    When your changes are ready, push the branch and open a PR against **develop**. This fires the **PR Evaluation Pipeline** (linting, unit tests, AI-driven checks):
-
-   ```bash
-   git add .
-   git commit -m "Implement Feature X"
-   git push origin feature/feature_x
-
-   gh pr create \
-     --base develop \
-     --head feature/feature_x \
-     --title "Feature X" \
-     --body "Adds Feature X and updates orchestration flow."
-   ```
 
 3. **Merge into develop & Deploy to dev**
    Once approved, merge the PR into `develop`. That triggers:
@@ -44,48 +26,16 @@ The diagram below illustrates our workflow for delivering a new feature (here �
    * **CI Pipeline**: Builds the flow and runs full AI-assisted tests.
    * **CD Pipeline**: Deploys the updated flow to the **dev** environment.
 
-4. **Tag a Release Candidate & Deploy to QA**
-   After validating in **dev**, tag a release candidate from `develop`:
+4. **Create a Release Branch**
+   Creating this branchtriggers the **CD Pipeline** to deploy to **qa** for UAT and red-teaming.
 
-   ```bash
-   git checkout develop
-   git pull origin develop
-   git tag -a v1.3.0-rc1 -m "Release Candidate 1 for v1.3.0"
-   git push origin v1.3.0-rc1
-   ```
+5. **Open a PR to main from the Release Branch**
+   When the new Release passes QA, open a PR targeting **main**
 
-   Pushing this tag triggers the **CD Pipeline** to deploy the RC to **qa** for UAT and red-teaming.
-
-5. **Open a PR to main from the RC tag**
-   When the RC passes QA, open a PR targeting **main** using the RC tag as the source:
-
-   ```bash
-   gh pr create \
-     --base main \
-     --head v1.3.0-rc1 \
-     --title "Release v1.3.0" \
-     --body "Merge release candidate v1.3.0-rc1 into main after QA approval."
-   ```
-
-   This ensures the exact tested candidate is promoted.
-
-6. **Reviewer Approves & Merges**
-   A reviewer reviews the PR. Once approved, merge it into `main`, which triggers the **CD Pipeline** to prepare for production.
-
-7. **Create Final Release & Deploy to prod**
+6. **Create Final Release & Deploy to prod**
    Tag the final version on `main` and publish a GitHub Release:
 
-   ```bash
-   git tag -a v1.3.0 -m "Release v1.3.0"
-   git push origin v1.3.0
-
-   gh release create v1.3.0 \
-     --target main \
-     --title "v1.3.0" \
-     --notes "Release 1.3.0: Feature X complete and deployed to production."
-   ```
-
-   This final tag triggers the **CD Pipeline** to deploy v1.3.0 to the **prod** environment.
+   This final tag triggers the **CD Pipeline** to deploy v1.0.0 to the **prod** environment.
 
 ## CI/CD Pipelines
 

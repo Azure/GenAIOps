@@ -2,7 +2,7 @@
 
 > 🎥 **Watch the walkthrough video**: [How to bootstrap your GenAI project](https://www.youtube.com/embed/nZMDtaDQuP4?autoplay=1)
 
-In this lab, you will create a new GenAI application repository based on the GPT-RAG orchestrator template and provision your development infrastructure with a single command. You’ll learn how to:
+In this lab, you will create a new GenAI application repository based on an agent-based project template and provision your development infrastructure with a single command.
 
 - Use **azd init** to instantiate a fresh repo from a template  
 - Run **azd provision** to deploy all infrastructure via Bicep  
@@ -10,7 +10,7 @@ In this lab, you will create a new GenAI application repository based on the GPT
 
 ## Success Criteria
 
-- A new repository exists in your GitHub (or Azure DevOps) account, created from the GPT-RAG template  
+- A new repository exists in your GitHub (or Azure DevOps) account, created from the AI Agent project template
 - Your development environment resources (App Service, AI Foundry Project, Search index, etc.) are deployed in Azure  
 - You know where to find and modify the Bicep files for custom environments  
 
@@ -36,7 +36,7 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
 
 </details>
 
-## Task 1: Initialize from the GPT‑RAG Template
+## Task 1: Initialize from the project Template
 
 1. **Open your terminal** and navigate to the folder where you keep your repositories. If you don’t have one yet, create it as shown below:
 
@@ -45,14 +45,14 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
    cd workspace
    ```
 
-2. **Create a directory** for your GPT‑RAG template and enter it:
+2. **Create a directory** for your project template and enter it:
 
    ```bash
    mkdir gpt-rag
    cd gpt-rag
    ```
 
-3. **Initialize the project** using the Azure Developer CLI with the GPT‑RAG template:
+3. **Initialize the project** using the Azure Developer CLI with the project template:
 
    ```bash
    azd init -t azure/gpt-rag -b genaiops-workshop
@@ -105,4 +105,4 @@ Note: To run the deployment automation lab, you need a Service Principal with Co
    - Azure AI Search index  
    - Other resources defined in `main.bicep`
 
-Congratulations—you've successfully bootstrapped a new GenAI project using the GPT-RAG orchestrator template! You’re now ready to move on to Lab: From Idea to Prototype.
+Congratulations—you've successfully bootstrapped a new GenAI project using your project template! You’re now ready to move on to Lab: From Idea to Prototype.

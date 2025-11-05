@@ -97,7 +97,7 @@ To index the content, deploy the data ingestion service that chunks and indexes 
 3. Initialize the project from the GPT-RAG ingestion template:
 
    ```bash
-   azd init -t azure/gpt-rag-ingestion -b genaiops-workshop
+   azd init -t azure/gpt-rag-ingestion -b v2.0.3
    ```
 
    > **Important:** Select the same environment name used during bootstrapping.
@@ -113,12 +113,16 @@ To index the content, deploy the data ingestion service that chunks and indexes 
    ```
    > **Important:** Select the same environment name and resource group used during bootstrapping.
 
-### B. Deploy the Ingestion Service
+### B. Upload the Employee Handbook
+
+6. Upload the [`employee_handbook.pdf`](https://github.com/Azure/gpt-rag-ingestion/blob/genaiops-workshop/samples/documents/contoso-eletronics/employee_handbook.pdf) to the **documents** container in your **Storage Account** (the one **without 'foundry' in its name**).
+
+### C. Deploy the Ingestion Service
 
 > [!IMPORTANT]
 > Docker engine must be running to execute containerized applications in the next steps. I you want to confirm just run `docker run hello-world` in your terminal.
 
-6. Deploy the project:
+7. Deploy the project:
 
    ```bash
    azd deploy
@@ -127,21 +131,13 @@ To index the content, deploy the data ingestion service that chunks and indexes 
 
    ![Deploying the Ingestion Service](../media/prototyping_deploying_ingestion.png)
 
-### C. Upload the Employee Handbook
+### D. Automatic Indexing
 
-7. Upload the [`employee_handbook.pdf`](https://github.com/Azure/gpt-rag-ingestion/blob/genaiops-workshop/samples/documents/contoso-eletronics/employee_handbook.pdf) to the **documents** container in your **Storage Account** (the one **without 'foundry' in its name**).
+8. After the deployment completes, the ingestion service will automatically detect and index the uploaded document. This process typically takes a few minutes.
 
-### D. Trigger the Indexer
+9. To verify the indexing is complete, go to the [Azure Portal](https://portal.azure.com) and navigate to your **AI Search** service (the one without 'foundry' in its name).
 
-8. In the [Azure Portal](https://portal.azure.com), go to your **AI Search** service (again, the one without 'foundry' in its name).
-
-9. Find the indexer that starts with `ragindex`, and click **Run** to trigger the indexing process.
-
-   At the end of the process, you will see something like:
-
-   ![Indexing your data](../media/prototyping_indexing.png)
-
-10. Go to the indexes area in your Search Service, find the ragindex you just indexed and hit Search to confirm you have data ingested in you index:
+10. Go to the indexes area in your Search Service, find the index that starts with `ragindex` and click **Search** to confirm you have data ingested in your index:
 
    ![Searching the indexed data](../media/prototyping_search_index.png)
 

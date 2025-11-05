@@ -2,7 +2,7 @@
 
 > 🎥 **Watch the step-by-step demo**: [Building GenAI App](https://www.youtube.com/embed/RYJsekbciXs?autoplay=1)
 
-In this lab you’ll review your GenAI landing-zone architecture, explore the dev environment you provisioned in bootstraping, then deploy the orchestrator code from the GPT-RAG template into that same environment.
+In this lab you’ll review your GenAI landing-zone architecture, explore the dev environment you provisioned in bootstraping, then deploy the orchestrator code from the Project template into that same environment.
 
 ![Architecture Overview](../media/ai_landing_zone.png)
 
@@ -11,7 +11,7 @@ _Above: the GenAI landing zone and AI Foundry Agent standard setup you provision
 ## Success Criteria
 
 - Identify all deployed resources in the Azure Portal “dev” environment  
-- Clone the GPT-RAG Orchestrator template and configure it against your existing azd environment  
+- Clone the project template and configure it against your existing azd environment  
 - Deploy the orchestrator Container App and successfully POST to `/orchestrator` endpoint  
 
 ## Prerequisites

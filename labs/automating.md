@@ -22,49 +22,24 @@ In this lab, you will configure GitHub Actions for your repo, inspect the two pi
 
 - Azure CLI (`az`) logged into your subscription  
 - GitHub CLI (`gh`) installed and authenticated  
-- Your feature repo created from the GPT-RAG template and initial code already pushed  
+- Your project repo created from the project template and initial code already pushed  
 - Your lab environment variables from previous labs (`APP_CONFIG_ENDPOINT`)  
 - A Service Principal with Contributor or Owner rights on your subscription  
 </details>
 
-Perfect — here’s your **Task 1** rewritten cleanly, in English, with both the **CLI one-liner** (works in Bash and PowerShell) and the **Portal alternative** (with a callout note about copying the secret).
-
----
-
 ## Task 1: Create a Service Principal
 
-You need a Service Principal so GitHub Actions can authenticate with Azure during deployments. You can create it either with the **Azure CLI** (recommended) or via the **Azure Portal** (alternative, useful for documentation).
-
----
-
-### Option A: Using Azure CLI (Recommended)
-
-1. Open a terminal (PowerShell, Bash, or Azure Cloud Shell) and run this one-liner:
-
-```bash
-az ad sp create-for-rbac --name "<your-sp-name>" --role Owner --scopes /subscriptions/<your-subscription-id> --sdk-auth
-```
-
-2. The command returns a JSON block containing:
-
-* `clientId`
-* `clientSecret`
-* `subscriptionId`
-* `tenantId`
-
-Save this JSON securely — you will use it in the next task when creating GitHub Secrets.
-
-### Option B: Using the Azure Portal (Alternative)
+You need a Service Principal so GitHub Actions can authenticate with Azure during deployments.
 
 1. Navigate to **Azure Portal → Microsoft Entra ID → App registrations → New registration**.
 
-   * Enter a name (e.g., `sp-gpt-rag`).
+   * Enter a name (e.g., `sp-genaiops`).
    * Select **Accounts in this organizational directory only (Single tenant)**.
    * Click **Register**.
 
 2. After registration, go to **Certificates & secrets → Client secrets → New client secret**.
 
-   * Enter a description (e.g., `sp-gpt-rag-secret`).
+   * Enter a description (e.g., `sp-genaiops-secret`).
    * Choose an expiration period.
    * Click **Add**.
    * Copy the **Value** immediately — this is your `clientSecret`.
@@ -78,69 +53,96 @@ Save this JSON securely — you will use it in the next task when creating GitHu
 
 ⚠️ **Important:** The client secret **Value** is only visible once, right after you create it. Be sure to copy and store it securely.
 
-👉 Whether you use the CLI or the Portal, the end result is the same: you have the four required values (`clientId`, `clientSecret`, `subscriptionId`, `tenantId`) to use as credentials in GitHub.
+## Task 2: Assign Permissions to the Service Principal
 
-## Task 2: Configure GitHub Environments
+For the newly created Service Principal to successfully deploy the application to your subscription, it must have the necessary permissions.
 
-1. In your GitHub repository, navigate to Settings → Environments.  
+| Role | Resource Type | Purpose |
+|------|---------------|---------|
+| **Owner** | Resource Group | Manage all Azure resources for deployment |
+| **App Configuration Data Reader** | App Configuration | Read application configuration settings |
+| **Azure AI User** | AI Foundry Resource | Access AI services and models |
+| **Azure AI Project Manager** | AI Foundry Resource | Manage AI projects and deployments |
+| **Key Vault Secrets User** | Key Vault | Access secrets and credentials |
+| **Search Index Data Reader** | AI Search | Read search indexes and data |
+| **Cosmos DB Built-in Data Contributor** | Cosmos DB | Read and write data to Cosmos DB |
 
-2. Create three environments named `dev`, `qa`, and `prod`.  
+These role assignments must be configured on the respective resources after they are provisioned during the bootstrapping process.
 
-3. For each environment, add this **Environment variables**:  
+> **Note:** If your organization requires more restrictive permissions, you can assign **Contributor** role instead. However, ensure the Service Principal has sufficient permissions to create and manage all required Azure resources for deployment.
 
-```
-   - APP_CONFIG_ENDPOINT 
-```
+## Task 3: Configure GitHub Environments
 
-4. In the same environment, create one **Secret** named `AZURE_CREDENTIALS` with the JSON from your Service Principal:  
+In this lab, we will configure only the **dev** environment. In a real-world scenario, you would repeat these steps for additional environments such as `qa` and `prod`.
 
-```
+1. In your GitHub repository, navigate to **Settings → Environments**.  
+
+2. Click **New environment** and create an environment named `dev`.  
+
+3. In the `dev` environment, add the following **Environment variable**:  
+
+   - **Name:** `APP_CONFIG_ENDPOINT`
+   - **Value:** (the endpoint from your Azure App Configuration resource)
+
+4. In the same `dev` environment, create a **Secret** named `AZURE_CREDENTIALS` with the JSON from your Service Principal:  
+
+   ```json
    {  
-     "clientId": "…",  
-     "clientSecret": "…",  
-     "subscriptionId": "…",  
-     "tenantId": "…"  
+     "clientId": "your-client-id",  
+     "clientSecret": "your-client-secret",  
+     "subscriptionId": "your-subscription-id",  
+     "tenantId": "your-tenant-id"  
    }  
-```
+   ```
 
-5. Confirm your Environments page shows the variables and secret for `dev` (repeat for `qa` and `prod`).  
+5. Confirm your dev environment shows the variable `APP_CONFIG_ENDPOINT` and the secret `AZURE_CREDENTIALS`.
+
+> Note: In a real world setup, you would create additional environments (qa, prod) and configure the same variables and secrets for each, potentially with different values for each environment (e.g., different App Configuration endpoints, different subscriptions, or different Service Principals with environment-specific permissions).
 
 
-## Task 3: Review the GitHub Actions Workflows
+## Task 4: Review the GitHub Actions Workflows
+
+efore reviewing the workflows, ensure you are in your local project directory that was created from the project template during the bootstrapping lab.
 
 1. Open `.github/pr_pipeline.yaml` (Pull Request Pipeline):  
-   - Triggers on pull requests to `develop`.  
+   - Triggers on pull requests to `genaiops-workshop`.  
    - Checks out code, logs into Azure, installs Python, and runs `evaluation/evaluate.sh`.  
    - Uploads evaluation-results as an artifact.  
 
 2. Open `.github/cicd_pipeline.yaml` (CI/CD Dev Pipeline):  
-   - Triggers on pushes to `develop`.  
+   - Triggers on pushes to `genaiops-workshop`.  
    - Installs and verifies `azd`, logs into Azure CLI and `azd`, then runs azd deploy.
 
-## Task 4: Execute the Feature-to-Deploy Workflow
+> **Note:** In this workshop, we're using the `genaiops-workshop` branch for simplicity. In a typical real world scenario, you would use the `develop` branch for development work and configure pipelines to trigger on pull requests and merges to `develop`.
 
-1. **Create a feature branch** off of `develop`:  
+## Task 5: Execute the Feature-to-Deploy Workflow
+
+Now you will execute the complete workflow by creating a feature branch, making changes, and deploying through the CI/CD pipeline. Make sure you are in your local repository directory (the one created from the project template).
+
+1. **Create a feature branch** off of `genaiops-workshop`:  
 
 ```
-      git checkout develop  
-      git pull origin develop  
-      git checkout -b feature/your_feature  
+      git checkout genaiops-workshop  
+      git pull origin genaiops-workshop  
+      git checkout -b feature/feature_x  
 ```
 
 2. Make a small change (e.g., update documentation or a prompt template).  
 
-3. **Open a pull request** against `develop`:  
+3. **Open a pull request** against `genaiops-workshop`:  
 
 ```
       git add .  
-      git commit -m "Add feature X"  
-      git push origin feature/your_feature  
-      gh pr create --base develop --head feature/your_feature --title "Feature X" --body "Adds feature X."
+      git commit -m "Feature X"  
+      git push origin feature/feature_x  
+      gh pr create --base genaiops-workshop --head feature/feature_x --title "Feature X" --body "Adds feature X."
 ```
 
    - Observe in GitHub Actions that the Pull Request Pipeline runs, executes evaluations, and uploads results.  
 
-4. **Merge the PR** into `develop` once checks pass.  
+4. **Merge the PR** into `genaiops-workshop` once checks pass.  
    - The CI/CD Dev Pipeline will trigger, run `azd init` and `azd deploy`, and update your dev Container App.  
 
-Congratulations—you’ve configured end-to-end CI/CD for your GenAI project. Your tests and evaluations run automatically on PRs, and successful merges to `develop` deploy your orchestrator into the dev environment!  
+> **Note:** For this workshop, we're merging into the `genaiops-workshop` branch. In a real-world development workflow, you would typically use a branching strategy where feature branches are merged into `develop`, which then gets promoted to `main` branch through additional environments and approval gates.
+
+Congratulations, you've configured end-to-end CI/CD for your GenAI project. Your tests and evaluations run automatically on PRs, and successful merges to `genaiops-workshop` deploy your orchestrator into the dev environment!

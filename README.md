@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **This repository has been retired and is now archived. For active development, documentation, and support, please visit [AgentOps Accelerator](https://aka.ms/agentops-accelerator).**
+
 ![Header](media/genaiopsheader.png)
 
 This repository provides practical guidance and applied recommendations for implementing GenAIOps using Azure services. While it does not aim to be an exhaustive or prescriptive guide, it presents a structured set of best practices and how-to resources tailored to typical scenarios encountered when developing GenAI applications on Azure. The content supports both newcomers and experienced teams refining their practices.
